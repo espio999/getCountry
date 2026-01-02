@@ -2885,16 +2885,16 @@ function getState(){
 //$country.textContent = getCountry();
 //$state.textContent = getState();
 
-//const REDIRECT_DESTINATION = "https://www.aol.com"
-//const REDIRECT_DESTINATION = "https://www.reversedfront.tw/pages/bgjp"
-//const REDIRECT_DESTINATION = "https://chinadigitaltimes.net/space/CDS%E4%B8%93%E9%A1%B5%EF%BC%9A%E6%95%8F%E6%84%9F%E8%AF%8D%E5%BA%93"
-const REDIRECT_DESTINATION = "https://impsbl.hatenablog.jp/entry/20251231";
-const HASH = "#%E4%B8%8D%E5%AF%A9%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AEredirect%E5%85%88";
-
 function executeLoggingAndRedirect(reason) {
+	//const REDIRECT_DESTINATION = "https://www.aol.com"
+	//const REDIRECT_DESTINATION = "https://www.reversedfront.tw/pages/bgjp"
+	//const REDIRECT_DESTINATION = "https://chinadigitaltimes.net/space/CDS%E4%B8%93%E9%A1%B5%EF%BC%9A%E6%95%8F%E6%84%9F%E8%AF%8D%E5%BA%93"
+	const REDIRECT_DESTINATION = "https://impsbl.hatenablog.jp/entry/20251231";
+	const HASH = "#%E4%B8%8D%E5%AF%A9%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AEredirect%E5%85%88";
   const timestamp = new Date().getTime();
-  var url = `${REDIRECT_DESTINATION}?&reason=${reason}&t=${timestamp}${HASH}`;
-  window.location.replace(url);
+  const url = `${REDIRECT_DESTINATION}?&reason=${reason}&t=${timestamp}${HASH}`;
+  
+	window.location.replace(url);
 }
 
 //referrer有無の確認。あればtrueを返す。
@@ -2904,7 +2904,7 @@ function isNoReferrer(){
 
 function shouldRedirect(){
 	const PROHIBITED_COUNTRIES = ["China", "Singapore"];
-	let userCountry = getCountry();
+	const userCountry = getCountry();
 
 	if (PROHIBITED_COUNTRIES.includes(userCountry)){
   	executeLoggingAndRedirect("SG")
