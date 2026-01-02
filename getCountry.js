@@ -2896,6 +2896,11 @@ function executeLoggingAndRedirect(reason) {
   window.location.replace(url);
 }
 
+//referrer無し、直接アクセスでなければ、検閲しない。
+if !(document.referrer === null || document.referrer.length == 0) {
+	return;
+}
+
 const PROHIBITED_COUNTRIES = ["China", "Singapore"]
 let userCountry = getCountry();
 
