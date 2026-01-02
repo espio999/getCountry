@@ -2897,18 +2897,21 @@ function executeLoggingAndRedirect(reason) {
   window.location.replace(url);
 }
 
-//referrer無し、直接アクセスでなければ、検閲しない。
-if (!(document.referrer === null || document.referrer.length == 0)) {
-	return;
+//referrer有無の確認。あればtrueを返す。
+function isNoReferrer(){
+	return (document.referrer) ? false : true;
 }
 
-const PROHIBITED_COUNTRIES = ["China", "Singapore"]
-let userCountry = getCountry();
+function shouldRedirect(){
+	const PROHIBITED_COUNTRIES = ["China", "Singapore"];
+	let userCountry = getCountry();
 
-if (PROHIBITED_COUNTRIES.includes(userCountry)){
-  executeLoggingAndRedirect("SG")
-}
-else{
-//  $country.textContent = userCountry;
+	if (PROHIBITED_COUNTRIES.includes(userCountry)){
+  	executeLoggingAndRedirect("SG")
+	}
 }
 
+//Referrer無し、直接アクセスの場合に検閲を実施。
+if (isNoReferrer) {
+	shouldRedirect();
+}
