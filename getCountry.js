@@ -2905,7 +2905,7 @@ function isNoReferrer(){
 }
 
 function shouldRedirect(){
-	const PROHIBITED_COUNTRIES = ["China", "Hong Kong", "Singapore"];
+	const PROHIBITED_COUNTRIES = ["Angola", "China", "Hong Kong", "Singapore"];
 	const userCountry = getCountry();
 
 	if (PROHIBITED_COUNTRIES.includes(userCountry)){
